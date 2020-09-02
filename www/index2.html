@@ -93,62 +93,17 @@
             <span class="glyphicon glyphicon-barcode"></span>
           </button>
         </form>
-
-            <div class="panel panel-default">
-                <div class="panel-heading"></div>
-                <div class="panel-body">
-                    <div class="media">
-                <div class="media-left">
-                  <img src="img_avatar1.png" id="myImage" class="media-object" style="width:60px">
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Notebook</h4>
-                  <p>Usuario: Rebeca Lima <br>
-                     Marca e modelo: Lenovo S145</p>
-                  <button type="button" class="btn btn-danger" onclick="tirarFoto();">
-                    <span class="glyphicon glyphicon-camera"></span>
-                    </button>
-                  <button type="button" class="btn btn-primary">
-                      <span class="glyphicon glyphicon-edit"></span>
-                    </button>
-                    <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#myModal">
-                        <span class="glyphicon glyphicon-paperclip"></span>
-                      </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
-                            
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Adicionar observações</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group">
-                                          <textarea class="form-control" rows="5" id="comment"></textarea>
-                                        </div>
-                                      </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                </div>
-                                </div>
-                                
-                            </div>
-                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                </div>
-            
-</div>
+			<div id='lista_equipamento'></div>
+			
+			<script>
+			$(document).ready(function(){
+				getEvent();
+			});
+			
+			</script>
 
             
-        <script src="cordova.js"></script>
+       <script src="cordova.js"></script>
     <script>
          function tirarFoto(){
             navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
@@ -165,6 +120,16 @@
             }
          }
         
+		function getEvent()
+	{
+		$.post("https://aplicacoes.jbrj.gov.br/formularios/equipamento/consequipamentoapp.php",
+		{
+		  op: "LISTA"
+		},
+		function(data,status){
+			$("#lista_equipamento").html(data); 
+		});
+	}
     </script>
 
     </body>
