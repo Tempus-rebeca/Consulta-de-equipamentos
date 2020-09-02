@@ -83,6 +83,16 @@
               </div>
           </div>
         </div>
+        <form class="example" action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+          
+          <button type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+          <button>
+            <span class="glyphicon glyphicon-barcode"></span>
+          </button>
+        </form>
 
             <div class="panel panel-default">
                 <div class="panel-heading"></div>
@@ -138,8 +148,8 @@
 </div>
 
             
-     |   <script src="cordova.js"></script>
-     |<script>
+        <script src="cordova.js"></script>
+    <script>
          function tirarFoto(){
             navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
                 destinationType: navigator.camera.DestinationType.FILE_URI,
@@ -155,7 +165,7 @@
             }
          }
         
-     </script>
+    </script>
 
     </body>
 </html>
